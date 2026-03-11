@@ -1,0 +1,19 @@
+{
+  "name": "StudyAI Pro",
+  "short_name": "StudyAI",
+  "description": "AI-Powered Smart Study Assistant",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#04040a",
+  "theme_color": "#6c63ff",
+  "orientation": "any",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    { "name": "Summarize", "url": "/?p=summary" },
+    { "name": "Quiz", "url": "/?p=quiz" },
+    { "name": "Flashcards", "url": "/?p=flashcards" }
+  ]
+}
