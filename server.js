@@ -10,7 +10,7 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 
 
 app.use(cors());
 app.use(express.json({ limit: "15mb" }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname)));  // ✅ FIXED: was path.join(__dirname, "public")
 
 // ── Groq Client ────────────────────────────────────
 let groq;
@@ -45,7 +45,6 @@ function parseJSON(raw) {
     .replace(/```json\s*/g, "")
     .replace(/```\s*/g, "")
     .trim();
-  // Find first { or [ and last } or ]
   const start = cleaned.search(/[{\[]/);
   const end = Math.max(cleaned.lastIndexOf("}"), cleaned.lastIndexOf("]"));
   if (start === -1 || end === -1) throw new Error("No JSON found in response");
@@ -247,7 +246,7 @@ ${context ? `The student's current notes context: ${context.substring(0, 800)}` 
 });
 
 // ── Serve Frontend ────────────────────────────────
-app.get("*", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
+app.get("*", (req, res) => res.sendFile(path.join(__dirname, "index.html")));  // ✅ FIXED: was path.join(__dirname, "public", "index.html")
 
 // ── Start ─────────────────────────────────────────
 app.listen(PORT, () => {
